@@ -1,33 +1,30 @@
-// Stores the current player's and computer's choices
-// 0 = Rock, 1 = Paper, 2 = Scissors
+
 var playerChoice;
 var computerChoice;
 
-// Stores the lables for the choices
 var choices = ["Rock", "Paper", "Scissors", "Spock", "Lizard"];
 
-// Variable to store the score
-// score[0] = wins, score[1] = ties, score[2] = losses
-var score = [0, 0, 0];
 
-// Stores the player's choice, then call's the function for storing the computer's choice
+var score = [0, 0, 0];
+var match = [0, 0];
+
+
 function storePlayerChoice(choice) {
     playerChoice = choice;
     console.log("My choice = " + choice);
     storeComputerChoice();
 }
 
-// Generate computer's random choice
+
 function storeComputerChoice() {
     computerChoice = Math.floor(Math.random() * 5);
     console.log("Computer choice = " + computerChoice);
 }
 
-// This is the function for playing the game
 function playGame() {
-    // Here is the game ruleset algorithm
+
     if (playerChoice == computerChoice) {
-        // We have a tie!
+
         updateScore(1);
         displayGameResult("tie")
     } else if (playerChoice == 0 && (computerChoice == 2 || computerChoice == 4)) {
@@ -77,6 +74,25 @@ function updateScore(val) {
     ++score[val];
     console.log("The score is now " + score);
 }
+function updateMatch(val) {
+    if (score[0] == 2) {
+        ++match[0];
+        score[0] = 0;
+        score[1] = 0;
+        score[2] = 0;
+        updateMatchBoard();
+    } else if (score[2] == 2) {
+        ++match[1];
+        score[0] = 0;
+        score[1] = 0;
+        score[2] = 0;
+        updateMatchBoard();
+    }
+}
+
+function updateMatchBoard() {
+    document.getElementById("wins2").textContent = match[0];
+    document.getElementById("losses2").textContent = match[1];
 
 
 function updateScoreBoard() {
