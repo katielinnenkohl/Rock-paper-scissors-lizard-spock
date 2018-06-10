@@ -22,6 +22,7 @@ function storeComputerChoice() {
 }
 
 function playGame() {
+    if (playerChoice != null){
 
     if (playerChoice == computerChoice) {
 
@@ -46,6 +47,8 @@ function playGame() {
         updateScore(2);
         displayGameResult("lose")
     }
+}
+    playerChoice = null;
 }
 
 
