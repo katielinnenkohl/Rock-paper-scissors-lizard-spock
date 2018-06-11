@@ -1,4 +1,3 @@
-
 var playerChoice;
 var computerChoice;
 
@@ -22,34 +21,39 @@ function storeComputerChoice() {
 }
 
 function playGame() {
-    if (playerChoice != null){
-
-    if (playerChoice == computerChoice) {
-
-        updateScore(1);
-        displayGameResult("tie")
-    } else if (playerChoice == 0 && (computerChoice == 2 || computerChoice == 4)) {
-        updateScore(0);
-        displayGameResult("win")
-    } else if (playerChoice == 1 && (computerChoice == 0 || computerChoice == 3)) {
-        updateScore(0);
-        displayGameResult("win")
-    } else if (playerChoice == 2 && (computerChoice == 1 || computerChoice == 4)) {
-        updateScore(0);
-        displayGameResult("win")
-    } else if (playerChoice == 3 && (computerChoice == 0 || computerChoice == 2)) {
-        updateScore(0);
-        displayGameResult("win")
-    } else if (playerChoice == 4 && (computerChoice == 1 || computerChoice == 3)) {
-        updateScore(0);
-        displayGameResult("win")
-    } else {
-        updateScore(2);
-        displayGameResult("lose")
+    if (playerChoice != null) {
+        if (playerChoice == computerChoice) {
+            updateScore(1);
+            displayGameResult("tie")
+        } else if (playerChoice == 0 && (computerChoice == 2 || computerChoice == 4)) {
+            updateScore(0);
+            updateMatch();
+            displayGameResult("win")
+        } else if (playerChoice == 1 && (computerChoice == 0 || computerChoice == 3)) {
+            updateScore(0);
+            updateMatch();
+            displayGameResult("win")
+        } else if (playerChoice == 2 && (computerChoice == 1 || computerChoice == 4)) {
+            updateScore(0);
+            updateMatch();
+            displayGameResult("win")
+        } else if (playerChoice == 3 && (computerChoice == 0 || computerChoice == 2)) {
+            updateScore(0);
+            updateMatch();
+            displayGameResult("win")
+        } else if (playerChoice == 4 && (computerChoice == 1 || computerChoice == 3)) {
+            updateScore(0);
+            updateMatch();
+            displayGameResult("win")
+        } else {
+            updateScore(2);
+            updateMatch();
+            displayGameResult("lose")
+        }
     }
-}
     playerChoice = null;
 }
+
 
 
 function displayGameResult(result) {
@@ -77,6 +81,7 @@ function updateScore(val) {
     ++score[val];
     console.log("The score is now " + score);
 }
+
 function updateMatch(val) {
     if (score[0] == 2) {
         ++match[0];
@@ -98,36 +103,36 @@ function updateMatchBoard() {
     document.getElementById("losses2").textContent = match[1];
 
 
-function updateScoreBoard() {
-    document.getElementById("wins").textContent = score[0];
-    document.getElementById("losses").textContent = score[2];
-    document.getElementById("ties").textContent = score[1];
-}
+    function updateScoreBoard() {
+        document.getElementById("wins").textContent = score[0];
+        document.getElementById("losses").textContent = score[2];
+        document.getElementById("ties").textContent = score[1];
+    }
 
 
-var rockButton = document.getElementById("rock");
-var paperButton = document.getElementById("paper");
-var scissorsButton = document.getElementById("scissors");
-var spockButton = document.getElementById("spock");
-var lizardButton = document.getElementById("lizard");
-var playButton = document.getElementById("play");
+    var rockButton = document.getElementById("rock");
+    var paperButton = document.getElementById("paper");
+    var scissorsButton = document.getElementById("scissors");
+    var spockButton = document.getElementById("spock");
+    var lizardButton = document.getElementById("lizard");
+    var playButton = document.getElementById("play");
 
 
-rockButton.addEventListener('click', () => {
-    storePlayerChoice(0)
-});
-paperButton.addEventListener('click', () => {
-    storePlayerChoice(1)
-});
-scissorsButton.addEventListener('click', () => {
-    storePlayerChoice(2)
-});
-spockButton.addEventListener('click', () => {
-    storePlayerChoice(3)
-});
-lizardButton.addEventListener('click', () => {
-    storePlayerChoice(4)
-});
-playButton.addEventListener('click', () => {
-    playGame()
-});
+    rockButton.addEventListener('click', () => {
+        storePlayerChoice(0)
+    });
+    paperButton.addEventListener('click', () => {
+        storePlayerChoice(1)
+    });
+    scissorsButton.addEventListener('click', () => {
+        storePlayerChoice(2)
+    });
+    spockButton.addEventListener('click', () => {
+        storePlayerChoice(3)
+    });
+    lizardButton.addEventListener('click', () => {
+        storePlayerChoice(4)
+    });
+    playButton.addEventListener('click', () => {
+        playGame()
+    });
