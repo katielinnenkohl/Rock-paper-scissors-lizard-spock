@@ -101,6 +101,7 @@ function updateMatch(val) {
 function updateMatchBoard() {
     document.getElementById("wins2").textContent = match[0];
     document.getElementById("losses2").textContent = match[1];
+}
 
 
     function updateScoreBoard() {
